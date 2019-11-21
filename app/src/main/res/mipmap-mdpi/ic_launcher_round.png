@@ -1,0 +1,76 @@
+package com.example.registroautor;
+
+import android.os.Bundle;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText etdui, etnombre, etedad, etdescripcion;
+
+    MantenimientoMySQL manto = new MantenimientoMySQL();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etdui = (EditText)findViewById(R.id.et_dui);
+        etnombre = (EditText)findViewById(R.id.et_nombre);
+        etedad = (EditText)findViewById(R.id.et_edad);
+        etdescripcion = (EditText)findViewById(R.id.et_descripcionautor);
+        RecyclerView recyclerView;
+
+        //Llamamos el recyclerView del xml
+        recyclerView = (RecyclerView) findViewById(R.id.rvHimnario);
+        //iniciar metodo cargarHimnario
+        cargarHimnario();
+    }
+
+    public void cargarHimnario(){
+        //Llamamos el recycler iniciamos y declaramos la orientacion
+        RecyclerView.setLayoutManager( new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL,false));
+        //llamamos el metodo  getlistaHimnario de la clase Himnario
+        listHimnario = new Himnario().getlistHimnario();
+
+
+        //Verificamos que exista un valor en la lista
+        if (listHimnario != null) {
+            //creamos el adaptador del recycler agregamos la lista de Himnario y el onIntemClickListener
+            RecyclerAdaptador = new RecyclerAdaptador(listHimnario, new RecyclerAdaptador.OnItemClickListener() {
+                @Override
+                //Obtenemos la posicion
+                public void onItemClick(final int position) {
+                    Toast.makeText(getApplicationContext(),"posiciòn "+position,Toast.LENGTH_LONG).show();
+                }
+            });
+            //Agregamos el adaptador al recycler
+            RecyclerView.setAdapter(RecyclerAdaptador);
+        }
+
+    }
+
+
+
+
+
+    Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(v

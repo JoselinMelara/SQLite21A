@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6F3FAF3"
+    tools:context=".ConsultaSpinner">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleccione el producto"
+        android:textSize="30dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#0F0D0D"
+        android:layout_marginLeft="15dp"
+        android:textAlignment="center"
+        />
+
+    <Spinner
+        android:id="@+id/sp_options"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:drawSelectorOnTop="true"
+        android:spinnerMode="dropdown"
+        android:layout_gravity="center"
+        android:padding="15dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:id="@+id/tv_codigo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Código:"
+        android:textSize="25dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#0F0D0D"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="bold"/>
+
+
+
+
+
+
+
+</LinearLayout>
